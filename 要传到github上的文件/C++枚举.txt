@@ -1,0 +1,18 @@
+什么时候使用枚举类型？
+某种变量只能取特定的几个整型值。
+减少魔法数，清楚的知道每个整型值在程序中的作用。
+
+枚举类型（1）
+enum Status {CONTINUE,WON,LOST};//{  }内是整型符号常量，默认是0,1,2
+Status gameStatus = CONTINUE;//枚举类型的变量的值必须是{ }内指定的符号常量
+
+枚举类型（2）
+为避免多个枚举类型的变量的指定值的符号常量重名。
+enum struct ENUM : int {E1,E2,E3};  0,1,2
+enum struct ENUM : int {E1 = 1,E2,E3};  1,2,3
+enum struct ENUM : int {E1 = 1,E2,E3 = 8,E4};  1,2,8,9
+int可以被替换成任何整型数据类型，只要表数范围足够大就OK
+enum struct ENUM {E1,E2,E3}; 
+枚举类型定义变量
+ENUM var1 = ENUM::E1;
+

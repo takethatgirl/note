@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //获取Configuration对象
+            Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //根据Key读取<add>元素的Value
+            string name = config.AppSettings.Settings["labelText"].Value;
+            this.label1.Text = name;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string configPath = @"C: \Users\Administrator\Documents\Visual Studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config";
+
+            ExeConfigurationFileMap map = new ExeConfigurationFileMap();
+            map.ExeConfigFilename = configPath;
+
+            //config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+            //获取Configuration对象
+            Configuration config = System.Configuration.ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);//OpenExeConfiguration(ConfigurationUserLevel.None);
+            //根据Key读取<add>元素的Value
+            string name = config.AppSettings.Settings["labelText"].Value;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ////获取Configuration对象
+            //Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            ////根据Key读取<add>元素的Value
+            //string name = config.AppSettings.Settings["labelText"].Value;
+            string configPath = @"C: \Users\Administrator\Documents\Visual Studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config";
+
+            ExeConfigurationFileMap map = new ExeConfigurationFileMap();
+            map.ExeConfigFilename = configPath;
+
+            //config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+            //获取Configuration对象
+            Configuration config = System.Configuration.ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);//OpenExeConfiguration(ConfigurationUserLevel.None);
+            //根据Key读取<add>元素的Value
+            string name = config.AppSettings.Settings["labelText"].Value;
+            this.label1.Text = name;
+        }
+    }

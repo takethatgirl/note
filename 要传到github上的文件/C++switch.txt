@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int data;
+	while((data = cin.get())!=EOF) {
+		switch(data) {
+			case 'A' :
+			case 'a' :
+				cout << "i am A/a\n";
+				break;
+			case '\n':
+			case ' ' :
+			case '\t' :
+				cout << "回车\\空格\n";
+				break;
+			default :
+				cout << "非A/a字母\n"; 
+				break;
+		}
+	}
+}
+
+switch(表达式)  表达式必须是整型或枚举类型，或者是一个class类型，其中 class 有一个单一的转换函数将其转换为整型或枚举类型。
+case后必须是字符常量或字面值。

@@ -1,0 +1,34 @@
+SELECT 列 FROM 表
+SELECT LastName FROM Persons
+SELECT LastName,FirstName FROM Persons
+SELECT * FROM Person
+SELECT DISTINCT Conpany FROM Orders //列重复元素只保留一个
+
+WHERE的操作符：
+ =  !=  >  <  <=  >=  BETWEEN 某个范围内 LIKE 搜索某种模式
+SELECT * FROM Persons WHERE City = 'BeiJing'
+SELECT * FROM Persons WHERE Age <= 30
+
+AND OR 用于WHERE语句
+SELECT * FROM Persons WHERE FirstName = 'Lee' AND LastName = 'Ryan'
+SELECT * FROM Persons WHERE FirstName = 'Lee' OR Age > 30
+AND OR结合( )威力更大
+SELECT * FROM Persons WHERE (FirstName = 'Lee' AND LastName = 'Ryan') OR Age > 30
+
+SELECT Company, OrderNumber FROM Orders ORDER BY Company //以Company列升序排列
+SELECT Company, OrderNumber FROM Orders ORDER BY Company, OrderNumber//以Company列升序排列，相同的Company列再以OrderNumber升序排列
+SELECT Company, OrderNumber FROM Orders ORDER BY Company DESC //降序排列 z y x w v u ...
+SELECT Company, OrderNumber FROM Orders ORDER BY Company DESC, OrderNumber ASC //ASC是升序
+
+INSERT INTO 向表中插入新的行
+INSERT INTO 表名称 VALUES(值1，值2...)
+INSERT INTO 表名称 (列1，列2 ...)(值1，值2，...)
+
+Update 修改表中的数据
+UPDATE Persons SET FirstName = 'Fred' WHERE LastName = 'Wilson' 
+UPDATE Persons SET Address = 'Zhongshan 23', City = 'Nanjing'
+WHERE LastName = 'Wilson'
+
+删除行
+DELETE FROM Person WHERE LastName = 'Wilson'
+DELETE FROM table_name //删除所有行

@@ -1,0 +1,12 @@
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\bin\Debug\刷新窗体的控制台类.exe.config
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\bin\Debug\刷新窗体的控制台类.exe
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\bin\Debug\刷新窗体的控制台类.pdb
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.csprojResolveAssemblyReference.cache
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.Form1.resources
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.Properties.Resources.resources
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.csproj.GenerateResource.Cache
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.exe
+c:\users\soft\documents\visual studio 2015\Projects\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.pdb
+C:\Users\soft\Documents\我的坚果云\C#\刷新窗体的控制台类\刷新窗体的控制台类\bin\Debug\刷新窗体的控制台类.exe.config
+C:\Users\soft\Documents\我的坚果云\C#\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.exe
+C:\Users\soft\Documents\我的坚果云\C#\刷新窗体的控制台类\刷新窗体的控制台类\obj\Debug\刷新窗体的控制台类.pdb

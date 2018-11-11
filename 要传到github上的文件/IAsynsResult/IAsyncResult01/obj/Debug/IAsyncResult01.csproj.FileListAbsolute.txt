@@ -1,0 +1,6 @@
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult01\bin\Debug\IAsyncResult01.exe.config
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult01\bin\Debug\IAsyncResult01.exe
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult01\bin\Debug\IAsyncResult01.pdb
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult01\obj\Debug\IAsyncResult01.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult01\obj\Debug\IAsyncResult01.exe
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult01\obj\Debug\IAsyncResult01.pdb

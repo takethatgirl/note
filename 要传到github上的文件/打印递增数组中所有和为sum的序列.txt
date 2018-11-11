@@ -1,0 +1,23 @@
+算法流程：指针i指向第一个元素，指针j指向第二个元素，两指针指向的和等于sum输出序列，j++；小于sum，前指针j++；大于sum，后指针i++；所有情况都要在原tmpsum基础上重新计算tmpsum。直到j超出范围或i和j相等。
+void PrintAllOrder(int *a, int length, long long sum) {
+	if (a == NULL || length <2)
+		return;
+	int i = 0;
+	int j = 1;
+	long long tmpsum = a[i] + a[j];
+	while (i < j && j <= length - 1) {
+		if (tmpsum == sum) {
+			Print(a, i, j);
+			++j;
+			tmpsum += a[j];
+		}
+		else if (tmpsum < sum) {
+			++j;
+			tmpsum += a[j];
+		}
+		else {
+			++i;
+			tmpsum -= a[i - 1];
+		}
+	}
+}

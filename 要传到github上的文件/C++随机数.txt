@@ -1,0 +1,16 @@
+<cstdlib>srand(unsigned int seed) seed固定，多次调用rand()会产生特定的随机数序列，序列的元素是0-RAND_MAX的无符号整数，RAND_MAX是<cstdlib>的字符常量 。
+序列是随机的，但是每次运行程序，随机数序列是相同的和可预测的，如果让seed也随机产生，更符合随机数的意义。
+我们可以在每次使用rand()前，设置随机的seed。
+srand(static_cast<unsigned int>(time(0)));rand();
+time(0),函数原型在<ctime>,返回time_t类型，是此刻距离格林尼治时间的秒数
+如何产生一定区间的连续的随机数？
+若想产生1-6的随机数：rand() % 6 + 1
+
+#include<iostream>
+#include<ctime> //time()
+#include<cstdlib> //srand(unsigned int) and rand()
+using namespace std;
+int main() {
+    srand(static_cast<unsigned int>(time(0)));
+    unsigned int data = rand() % 6 + 1;
+}

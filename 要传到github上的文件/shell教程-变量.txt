@@ -1,0 +1,117 @@
+命令查找顺序：alias -> bash内置 -> PATH
+如何查看ls是否另命名： type -a ls
+设置 bash 的登陆欢迎信息
+
+亲临终端修改 /etc/issue
+远程登陆修改 /etc/issue.net
+提醒信息修改 /etc/motd ( Message Of The Day )
+\d 日期，\t 时间，\l 几号终端，\m 硬件等级，\r 内核版本，\S 发行版本
+regular expression：以行为单位处理字符串。
+
+语系LANG设置值不同，使用RE处理字符串的输出结果可能不同。
+
+grep的使用方法
+
+cat filename |  grep -n -A x -B y '待搜寻的字符串‘   等价于  grep -n -A x -B y '待搜寻的字符串‘ filename。
+command |  grep -n -A x -B y '待搜寻的字符串‘。
+grep 显示文件中含有关键字的行，-n显示输出行的行号，-A -B 同时显示含有关键字行的前x和后y行。
+
+ 有且仅有1个任意字符 有且仅有2个任意字符 可有可无任意字符 至少有1个任意字符 可有可无字符k 至少有1个字符k 某一位一定不是字符k 某一位一定不是字符k,d或 j
+ '.' '..' '.*' '..*' 'k*' 'kk*' [^k] [^kdej]
+
+/etc/passwd   /etc/shadow  /etc/group  /etc/gshadow
+head -4 /etc/passwd
+root : x : 0 : 0 : root：/root ：/bin/bash
+daemon : x :2 :2 : daemon : /sbin : /sbin/nologin
+.......
+问题3：忘记root密码怎么找回？
+方法1：重启，救援模式，系统自动给予root权限bash接口，passwd命令修改密码
+方法2：liveCD，挂载根目录，修改/etc/shadow把root密码字段清空，重启，重设
+
+head -4  /etc/group
+用户组名称：x：GID ： 此用户组支持的账号名称
+问题1：如何把账号hello加入用户组root中？
+答：在root支持的账号名称加写hello，账号之间用，隔开。
+问题2：如何查看某个账号支持的所有用户组？
+答：groups
+问题3：由于一个账号可以拥有多个用户组，那么创建档案时，默认的用户组是哪一个？
+答：是groups命令列出的第一个用户组，若是修改，请用 newgrp 用户组名称 命令。
+
+shell变量讲解
+如何定义一个变量？
+echo $name
+如何给一个变量赋值？
+name=hello
+   待赋值字符串含有空格
+name="hello world ！"
+name=hello\ world\ !
+   转义字符当成普通字符赋值
+name=\$h
+   命令结果作为待赋值的字符串
+name=number\ is\ :\ $(uname -r)
+   待赋值字符串含有' 和 “
+name=vbird\'s\ name
+在变量内容基础上增加内容
+name=${name}\ is\ true
+在变量内容基础上删除内容
+echo ${variable#/*:}从头最短匹配
+echo ${variable##/*:}从尾最长匹配
+echo ${variable%:*bin}从最短匹配
+echo ${variable%%:*bin}从尾最长匹配
+在变量内容基础上替换内容
+echo ${variable/old string/new string}仅替换第一个
+echo ${variable//old string/new string}替换所有
+定义并同时输出化一个变量：
+variable="hello world !"
+相当于--->echo $variable 
+                variable="hello world !"
+键盘获取变量的值：
+read variable
+read -p "t提示内容" -t 10 variable
+10秒内根据提示内容从键盘输入variable的值
+数组
+d定义数组
+declare -a arr[3]
+初始化数组
+arr[0]=hello
+arr[1]=world
+arr[2]=!
+输出数组
+echo ${arr[0]}  ${arr[1]}  ${arr[2]}  
+以上所有声明，定义，赋值都是字符串。
+如何定义非字符串变量以及设置变量属性？
+declare -i variable 整型
+declare -x variable 环境变量
+declare -r variable 只读类型
+decalre -p variable 输出variable的属性以及内容
+如何输出一个变量的内容？
+echo $name
+如何在子进程中使用父进程的变量？
+如何销毁一个变量？
+unset name
+【重点】 $(命令) 完全等价于 命令输出的字符串
+              ${变量} 完全等价于 变量内容字符串
+理解下面命令
+echo $a
+a="/tmp/china/henan"
+cd $a
+pwd
+怎样查看环境变量？ env 
+怎样查看自定义变量和环境变量？ set
+解释说明下列环境变量：
+HOME
+PATH
+LANG
+SHELL
+MAIL
+HISTSIZE
+PS1
+$
+?
+【怎样修改命令提示符？】
+怎样查看当前语言环境？ locale
+解释下列命令的含义：
+history
+!7
+!!
+!al

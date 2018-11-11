@@ -1,0 +1,74 @@
+array是类模板。
+array存储空间一旦定义不能再变。
+/定义后初始化
+array<int,10> n;
+for(size_t i = 0;i < n.size();++i)
+n[i] = 0;
+size_t是无符号整型。
+//定义时初始化
+array<int,10> n = { };//全部初始化成0
+array<int,10> n = {0,1,2,3,4}//后面的初始化成0
+
+良好的编程习惯
+使用只读变量指定array的大小
+const size_t arraySize = 10;
+array<int,arraySize> n;
+
+const修饰的变量，定义时必须初始化且不能再修改。
+只读变量消灭“魔法数”，能清楚的知道字面值在程序中的作用。
+
+静态局部array对象和自动局部array对象
+static array<int,arraySize> n;
+函数运行完毕，array对象仍旧存在，节省分配开销，提高系统性能。
+
+防越界的for遍历：适用于C++大部分容器
+int main() {
+	const size_t arraySize = 10;
+	array<int, arraySize> n = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	for (int temp : n) {
+		cout << temp << " ";
+	}
+	cout << endl;
+	for (int & temp : n) {
+		temp++;
+		cout << temp << " ";
+	}
+	cout << endl;
+	system("pause");
+    return 0;
+}
+1 2 3 4 5 6 7 8 9 10
+2 3 4 5 6 7 8 9 10 11
+把for当做函数，: 前传值或传引用，：后传入array对象名。
+
+二维array
+const size_t row = 4;//4行
+const size_t column = 3;//3列
+//打印二维数组
+void printArray(const array<array<int, column>, row> & Arr) {
+	for (auto const &row : Arr) {
+		for (auto const &elem : row) {
+			cout << elem << ' ';
+		}
+	}
+}
+
+int main() {
+	array<array<int, column>, row> Arr;//定义二维array
+	for (size_t r = 0; r < Arr.size(); ++r)//初始化
+		for (size_t c = 0; c < Arr[r].size(); ++c)
+			Arr[r][c] = 100;
+	printArray(Arr);//打印
+}
+
+vector存储空间是可以变化的。
+vector<int> V(10);
+默认情况下，vector初始化为0
+== 可以判断两个vector存储内容是否相同
+= 可以把一个vector的内容拷贝到另外一个vector
+
+
+
+		
+
+ 

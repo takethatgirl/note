@@ -1,0 +1,18 @@
+//弹出一个选择目录的对话框
+
+private void btnSelectPath_Click(object sender, EventArgs e) //弹出一个选择目录的对话框
+ {
+    FolderBrowserDialog path = new FolderBrowserDialog();
+    path.ShowDialog();
+    this.txtPath.Text = path.SelectedPath;
+ }
+ 
+
+//弹出一个选择文件的对话框
+
+private void btnSelectFile_Click(object sender, EventArgs e) //弹出一个选择文件的对话框
+ {
+    OpenFileDialog file = new OpenFileDialog();
+    file.ShowDialog();
+    this.txtFile.Text = file.SafeFileName;
+ }

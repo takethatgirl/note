@@ -1,0 +1,14 @@
+问题：
+计算一个二进制表示的整数中1的个数。
+算法：
+判断某一位是0还是1可以&1；count计数器，用来统计1的个数；设置一个相同数据类型的i = 1，左移，&1，当i==0时，刚好把目标整数与一遍。
+代码：
+unsigned short int NumberOf1(int a) {
+	int count = 0;
+	int i;
+	for (i = 1;i;i <<= 1) {
+		if (a & i)
+		    ++count;
+	}
+	return count;
+}

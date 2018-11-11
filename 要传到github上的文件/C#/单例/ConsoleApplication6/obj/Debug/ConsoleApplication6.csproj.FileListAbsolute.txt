@@ -1,0 +1,9 @@
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\ConsoleApplication6\ConsoleApplication6\bin\Debug\ConsoleApplication6.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\ConsoleApplication6\ConsoleApplication6\bin\Debug\ConsoleApplication6.exe
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\ConsoleApplication6\ConsoleApplication6\bin\Debug\ConsoleApplication6.pdb
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\ConsoleApplication6\ConsoleApplication6\obj\Debug\ConsoleApplication6.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\ConsoleApplication6\ConsoleApplication6\obj\Debug\ConsoleApplication6.exe
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\ConsoleApplication6\ConsoleApplication6\obj\Debug\ConsoleApplication6.pdb
+C:\Users\soft\Documents\我的坚果云\ALC\单例\ConsoleApplication6\bin\Debug\ConsoleApplication6.exe.config
+C:\Users\soft\Documents\我的坚果云\ALC\单例\ConsoleApplication6\obj\Debug\ConsoleApplication6.exe
+C:\Users\soft\Documents\我的坚果云\ALC\单例\ConsoleApplication6\obj\Debug\ConsoleApplication6.pdb

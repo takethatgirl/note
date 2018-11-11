@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
+namespace mysql最佳连接模板
+{
+    
+    class MysqlAssistant
+    {
+        public static string connectionString = "username= root;password=12356;server=117.168.11.11;port=3306;"+
+            "database=user;Connect Timeout=10;charset='utf8';pooling=true";
+
+        public MySqlConnection con;
+        //用一个数据库连接字符串实例化了一个MysqlConnection对象，仅仅是该连接存在，但是连接处于closed状态
+        //尚未打开连接，未与数据库连接
+        //MysqlConnection有三种状态：closed，connecting，open
+        //open()可能抛出异常
+        //连接对象有属性，其中connect_timeout的值，决定open尝试连接数据库的时长，如果设置时间内未成功连接，
+        //将放弃连接，并抛出mysqlException异常
+        //mysqlCommand被销毁，则mysqlreader也被销毁，就像父窗体和子窗体那样
+        public MysqlAssistant(string connectionString)
+        {
+            this.con = new MySqlConnection(connectionString);
+        }
+        /// <summary>
+        /// 执行insert，delete，upgrade三种命令
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public bool ExeMysqlCommand(string sql, params MySqlParameter[] parameters)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+            }
+            catch(InvalidOperationException e1)
+            {
+                Console.WriteLine(e1.Data + "\nCannot open a connection without specifying a data source or server.");
+            }
+            catch(MySqlException e2)
+            {
+                Console.WriteLine(e2.Data + "\nA connection-level error occurred while opening the connection.");
+            }
+
+            using(MySqlCommand mycommand = new MySqlCommand(sql, con))
+            {
+                if(parameters != null)
+                {
+                    mycommand.Parameters.AddRange(parameters);
+                }
+                if (mycommand.ExecuteNonQuery()>0) //返回受影响的行数，没影响任何行（操作失败），返回0
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 使用前，记得判断是否为null；使用完毕后，记得释放command；| 再考虑下，应该不用再次释放
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="con"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public MySqlDataReader GetSelectResult(string sql,params MySqlParameter[] parameters)
+        {
+
+
+            //mysqlCommand对象是种资源，用完应当及时调用它的dispose方法，它没有close方法；
+            //MySqlCommand如果被dispose，那么MySqlDataReader也将被销毁，不能从里面读数据
+            //mysqlCommand执行sql语句对数据库操作，会占用连接，该mysqlCommand未释放，不能利用该mysqlCommand对象
+            //MySqlDataReader未被close之前，mysqlconnection一直被占用，除了关闭connection之外，不能对connection进行其他任何操作
+            //记得关闭MysqlDataReader，关闭后连接对象才能被继续使用
+            using (MySqlCommand mycommand = new MySqlCommand(sql, con))
+            {
+                if (parameters != null)
+                {
+                    mycommand.Parameters.AddRange(parameters);
+                }
+                //执行mysqlCommand之前务必确保open了MysqlConnection对象
+                try
+                {
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                }
+                catch (InvalidOperationException e1)
+                {
+                    Console.WriteLine(e1.Data + "\nCannot open a connection without specifying a data source or server.");
+                }
+                catch (MySqlException e2)
+                {
+                    Console.WriteLine(e2.Data + "\nA connection-level error occurred while opening the connection.");
+                }
+
+                MySqlDataReader reader = mycommand.ExecuteReader();
+                if (reader.HasRows) //如果读到记录，则为true，否则为false
+                {
+                    return reader;
+                }
+                else
+                {
+                    return null;
+                }
+                //while (reader.Read()) //往前走一个记录
+                //{
+                //    reader.GetString(0); //读该行记录的指定列，并转换为指定类型
+
+                //    while (reader.NextResult())//逐个读该行记录的每列
+                //    {
+
+                //    }
+                //}
+            }
+        }
+
+    }
+}
+
+/* 前些日子作一些数据项目的时候 在ADO.NET 中处理 ExecuteNonQuery()方法时，总是通过判断其返回值是否大于0来判断操作时候成功 。但是实际上并不是这样的，好在处理的数据操作多时 修改， 插入， 删除，否则的话问题就有点打了，都是些基础的知识，但是很重要个人觉得有必要记下来。
+
+     ExecuteNonQuery()方法主要用户更新数据，通常它使用Update,Insert,Delete语句来操作数据库，其方法返回值意义：对于 Update,Insert,Delete  语句 执行成功是返回值为该命令所影响的行数，如果影响的行数为0时返回的值为0，如果数据操作回滚得话返回值为-1，对于这种更新操作 用我们平时所用的是否大于0的判断操作应该没有问题而且比较好，但是对于其他的操作如对数据库结构的操作，如果操作成功时返回的却是-1,这种情况跟我们平时的思维方式有点差距所以应该好好的注意了，例如对数据库共添加一个数据表的Create操作，当创建数据表成功时返回-1,如果操作失败的话（如数据表已经存在）往往会发生异常，所以执行这种操作时最好用try--catch--语句来容错。

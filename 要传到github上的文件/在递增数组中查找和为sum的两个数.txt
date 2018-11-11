@@ -1,0 +1,22 @@
+/*在一个递增数组中，查找任意一对和为sum的两个数*/
+/*算法描述：前指针i指向数组第一个元素，后指针j指向数组最后一个元素，
+两指针指向和等于sum，返回两指向；大于sum，后指针后退一单元；小于sum，
+前指针前进一单元，直到查找到和为sum的两个数或两指针重合为止。*/
+bool FindTwoNumSum(int *a, int n, int sum, int &one, int &another) {
+	if (a == NULL || n <= 1)
+		return false;
+	int i = 0;
+	int j = n - 1;
+	while (i < j) {
+		if (a[i] + a[j] == sum) {
+			one = i;
+			another = j;
+			return true;
+		}
+		else if (a[i] + a[j] < sum)
+			++i;
+		else
+			--j;
+	}
+	return false;
+}

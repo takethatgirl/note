@@ -1,0 +1,5 @@
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult02\bin\Debug\IAsyncResult02.exe.config
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult02\bin\Debug\IAsyncResult02.exe
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult02\bin\Debug\IAsyncResult02.pdb
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult02\obj\Debug\IAsyncResult02.exe
+c:\users\administrator\documents\visual studio 2015\Projects\IAsynsResult\IAsyncResult02\obj\Debug\IAsyncResult02.pdb
